@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     #Connected internal apps
     'toys.apps.ToysConfig',
     'comments.apps.CommentsConfig',
+    'purchase.apps.PurchaseConfig'
 ]
 
 MIDDLEWARE = [

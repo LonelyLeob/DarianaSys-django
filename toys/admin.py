@@ -1,8 +1,12 @@
 from django.contrib import admin
 from .models import Material, Toy
 
-admin.site.register(Toy)
-admin.site.register(Material)
+@admin.register(Toy)
+class ToyAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title']
+    readonly_fields = ['id',]
 
-admin.site.site_title = 'Dariana Toys'
-admin.site.site_header = "DarianaToys"
+@admin.register(Material)
+class MaterialAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title']
+    readonly_fields = ['id',]
