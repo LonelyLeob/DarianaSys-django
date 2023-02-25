@@ -1,0 +1,11 @@
+#cached files
+__pycache__
+
+#works files
+*.sql
+*.sqlite3
+.env
+
+#module migrations
+/*/migrations/*
+!/*/migrations/__init__.py
