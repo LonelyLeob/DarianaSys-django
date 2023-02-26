@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import ToyAPIView, index
+from .views import ToysShortAPIView, ToyAPIView, index
 
 urlpatterns = [
     path("test/", index),
-    path('all/', ToyAPIView.as_view())
+    path('all/', ToysShortAPIView.as_view()),
+    path('concrete/<int:id>', ToyAPIView.as_view()),
 ]

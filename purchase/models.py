@@ -2,7 +2,6 @@ from django.db import models
 from toys.models import Toy
 
 class Purchase(models.Model):
-    id = models.IntegerField(verbose_name="ID заявки", primary_key=True)
     toy_id = models.ForeignKey(verbose_name="ID игрушки", to=Toy, on_delete=models.PROTECT)
     status_choices = ([
         ("WAIT", "Ожидает исполнения"),
