@@ -3,11 +3,11 @@ from .models import Comment
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'comment']
-    readonly_fields = ['id', 'toy_id', 'commenter_id', 'comment']
+    list_display = ['pk', 'comment']
+    readonly_fields = ['pk', 'toy_id', 'commenter_id', 'comment']
     
-    def has_add_permission(self, request):
+    def has_add_permission(self, _):
         return False
     
-    def has_delete_permission(self, request):
+    def has_delete_permission(self, _):
         return False

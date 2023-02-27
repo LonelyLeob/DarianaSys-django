@@ -12,7 +12,7 @@ class Purchase(models.Model):
     status = models.CharField(verbose_name="Статус", choices=status_choices, max_length=6)
 
     def __str__(self) -> str:
-        return self.toy_id
+        return f"Заявка №{self.pk}"
     
     class Meta:
         verbose_name = "Заявка"
