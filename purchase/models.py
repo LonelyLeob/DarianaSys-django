@@ -1,8 +1,9 @@
 from django.db import models
 from toys.models import Toy
+from user.models import User
 
 class Purchase(models.Model):
-    toy_id = models.ForeignKey(verbose_name="ID игрушки", to=Toy, on_delete=models.PROTECT)
+    user_id = models.ForeignKey(verbose_name='ID пользователя', to=User, on_delete=models.CASCADE)
     status_choices = ([
         ("WAIT", "Ожидает исполнения"),
         ("ACCEPT", "Принята"),
@@ -16,3 +17,11 @@ class Purchase(models.Model):
     class Meta:
         verbose_name = "Заявка"
         verbose_name_plural = "Заявки"
+
+class PurchaseItem(models.Model):
+    toy_id = models.ForeignKey(verbose_name="ID игрушки", to=Toy, on_delete=models.PROTECT)
+    amount = models.PositiveIntegerField(verbose_name="Количество")
+
+    class Meta:
+        verbose_name = "Предмет заявки"
+        verbose_name_plural = "Предметы заявки"

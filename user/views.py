@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from .serializer import UserSerializer
 from .models import User
-import jwt
-from datetime import timedelta, datetime
+# import jwt
+# from datetime import timedelta, datetime
 
 class RegisterView(APIView):
     def post(self, request: HttpRequest):

@@ -1,19 +1,17 @@
-from rest_framework import generics, request
+from rest_framework.generics import ListAPIView
 from .models import Toy
 from .serializer import ToyShortSerializer, ToySerializer
-from django.http import HttpRequest, HttpResponse
 
-def index(request: HttpRequest):
-    return HttpResponse("HelloWorld")
+# def index(request: HttpRequest):
+#     return HttpResponse("HelloWorld")
 
-
-class ToysShortAPIView(generics.ListAPIView):
+class ToysShortAPIView(ListAPIView):
     serializer_class = ToyShortSerializer
 
     def get_queryset(self):
         return Toy.objects.all()
 
-class ToyAPIView(generics.ListAPIView):
+class ToyAPIView(ListAPIView):
     serializer_class = ToySerializer
     
     def get_queryset(self):

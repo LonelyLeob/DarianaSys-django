@@ -14,7 +14,7 @@ class Toy(models.Model):
     title = models.CharField(verbose_name="Название", max_length=50, unique=True)
     price = models.DecimalField(verbose_name="Цена", decimal_places=2, max_digits=10)
     description = models.CharField(verbose_name="Описание", max_length=500)
-    materials = models.ManyToManyField(Material)
+    materials = models.ManyToManyField(verbose_name='Материалы', to=Material)
     
     def __str__(self) -> str:
         return self.title
