@@ -8,7 +8,7 @@ class MaterialsSerializer(serializers.ModelSerializer):
 class ToyShortSerializer(serializers.ModelSerializer):
     class Meta:
         model = Toy
-        fields = ('title', 'price')
+        fields = ('pk','title', 'price')
 
 class ToySerializer(serializers.ModelSerializer):
     materials = MaterialsSerializer(many=True, read_only=True)

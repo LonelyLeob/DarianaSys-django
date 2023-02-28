@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'toys.apps.ToysConfig',
     'comments.apps.CommentsConfig',
     'purchase.apps.PurchaseConfig',
-    'user.apps.UserConfig'
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
@@ -101,17 +101,51 @@ USE_I18N = True
 
 USE_TZ = True
 
+# all static in project
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #CORS settings
-CORS_ALLOWED_ORIGINS = [
-    #uncomment when deploying
-    #'http://localhost:3000',
-    #'https://localhost',
-]
+
+# uncomment if we need testing requests
+#CORS_ALLOW_ALL_ORIGINS = True
+
+# uncomment if must apply all requested hosts
+# CORS
+
+# uncomment methods what we need after deploying
+# CORS_ALLOW_METHODS = [
+#     'DELETE',
+#     'GET',
+#     'OPTIONS',
+#     'PATCH',
+#     'POST',
+#     'PUT',
+# ]
+
+# uncomment headers what we need after deploying
+# CORS_ALLOW_HEADERS = [
+#     'accept',
+#     'accept-encoding',
+#     'authorization',
+#     'content-type',
+#     'dnt',
+#     'origin',
+#     'user-agent',
+#     'x-csrftoken',
+#     'x-requested-with',
+# ]
+
+# uncomment if we need requests with credentials
+#CORS_ALLOW_CREDENTIALS = True
+
+# uncomment if we need access only from concrete url
+# CORS_ALLOWED_ORIGINS = [
+#     #'http://localhost:3000',
+#     #'https://localhost',
+# ]
 
 #REST settings
 REST_FRAMEWORK = {
