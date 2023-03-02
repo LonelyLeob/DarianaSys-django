@@ -9,12 +9,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = bool(os.getenv("DEBUG"))
+DEBUG = True
 
 ALLOWED_HOSTS = [
     #uncomment when deploying
-    #'151.248.113.138',
+    #'194.58.97.235',
     #'uni-team-inc.online',
+]
+
+#uncomment when deploying
+CSRF_TRUSTED_ORIGINS = [
+    #'http://194.58.97.235',
+    #'https://194.58.97.235'
+    #'http://uni-team-inc.online',
+    #'https://uni-team-inc.online',
 ]
 
 INSTALLED_APPS = [
@@ -30,6 +38,7 @@ INSTALLED_APPS = [
     #Included library apps
     'rest_framework',
     'corsheaders',
+    'ckeditor',
 
     #Connected internal apps
     'toys.apps.ToysConfig',
