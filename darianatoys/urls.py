@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-# from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
+from django.conf.urls.static import static
+from .settings import MEDIA_ROOT, STATIC_ROOT, DEBUG
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -8,7 +9,8 @@ urlpatterns = [
     path('api/v1/comments/', include('comments.urls')),
     path('api/v1/purchase/', include('purchase.urls')),
     path('api/v1/user/', include('user.urls')),
-    # path('api/v1/token/', TokenObtainPairView.as_view()),
-    # path('api/v1/refresh/', TokenRefreshView.as_view()),
-    # path('api/v1/verify/', TokenVerifyView.as_view()),
 ]
+
+if DEBUG:
+    urlpatterns += static("media/", document_root=MEDIA_ROOT)
+    urlpatterns += static("media/", document_root=STATIC_ROOT)

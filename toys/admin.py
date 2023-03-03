@@ -13,5 +13,5 @@ class MaterialAdmin(admin.ModelAdmin):
 
 @admin.register(ToyImage)
 class ToyImageAdmin(admin.ModelAdmin):
-    list_display = ['pk', 'title', 'url_path']
+    list_display = ['pk', 'title',]
     
