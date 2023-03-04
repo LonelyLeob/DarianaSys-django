@@ -13,16 +13,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     #uncomment when deploying
-    #'194.58.97.235',
-    #'uni-team-inc.online',
+    '127.0.0.1',
+    '194.58.97.235',
+    'uni-team-inc.online',
 ]
 
 #uncomment when deploying
 CSRF_TRUSTED_ORIGINS = [
-    #'http://194.58.97.235',
-    #'https://194.58.97.235'
-    #'http://uni-team-inc.online',
-    #'https://uni-team-inc.online',
+    'http://194.58.97.235',
+    'https://194.58.97.235'
+    'http://uni-team-inc.online',
+    'https://uni-team-inc.online',
 ]
 
 INSTALLED_APPS = [
@@ -115,14 +116,14 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # all media in project
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #CORS settings
 
 # uncomment if we need testing requests
-#CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 # uncomment if must apply all requested hosts
 # CORS

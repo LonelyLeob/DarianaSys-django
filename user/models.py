@@ -22,7 +22,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['password']
 
 class TokenStorage(models.Model):
-    user_id = models.ForeignKey(verbose_name="CompareWith", to=User, on_delete=models.CASCADE)
+    user = models.ForeignKey(verbose_name="CompareWith", to=User, on_delete=models.CASCADE)
     refresh = models.CharField(verbose_name="Refresh", max_length=255)
 
     class Meta:

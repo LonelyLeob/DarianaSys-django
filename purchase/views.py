@@ -1,10 +1,12 @@
-from rest_framework.request import HttpRequest
-from rest_framework.views import APIView
-from .serializer import PurchaseSerializer
+from rest_framework.generics import ListCreateAPIView
+from .models import Purchase
+from .serializer import PurchaseHistorySerializer
 
 # def index(request: HttpRequest):
 #     return HttpResponse("HelloWorld")
 
-class PurchaseView(APIView):
-    def post(self, request: HttpRequest):
-        serializer = PurchaseSerializer
+class PurchaseAPIView(ListCreateAPIView):
+    serializer_class = PurchaseHistorySerializer
+
+    def get_queryset(self):
+        return Purchase.objects.filter(user="1")

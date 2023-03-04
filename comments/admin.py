@@ -5,9 +5,10 @@ from .models import Comment
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['pk', 'comment']
     readonly_fields = ['pk', 'toy_id', 'commenter_id', 'comment']
+    exclude = ['pk',]
     
-    def has_add_permission(self, _):
+    def has_add_permission(self, *_):
         return False
     
-    def has_delete_permission(self, _):
+    def has_delete_permission(self, *_):
         return False

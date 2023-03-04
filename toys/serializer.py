@@ -1,25 +1,25 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer, ImageField
 from .models import Toy, ToyImage, Material
 
-class MaterialSerializer(serializers.ModelSerializer):
+class MaterialSerializer(ModelSerializer):
     class Meta:
         model = Material
         fields = ('title',)
 
-class ToyImageSerializer(serializers.ModelSerializer):
-    photo = serializers.ImageField(read_only=True)
+class ToyImageSerializer(ModelSerializer):
+    photo = ImageField(read_only=True)
     class Meta:
         model = ToyImage
-        fields = ('pk', 'photo')
+        fields = ('photo',)
     
 
-class ToyShortSerializer(serializers.ModelSerializer):
+class ToyShortSerializer(ModelSerializer):
     photos = ToyImageSerializer(many=True, read_only=True)
     class Meta:
         model = Toy
         fields = ('pk','title', 'price', 'photos')
 
-class ToySerializer(serializers.ModelSerializer):
+class ToySerializer(ModelSerializer):
     photos = ToyImageSerializer(many=True, read_only=True)
     materials = MaterialSerializer(many=True, read_only=True)
     class Meta:
