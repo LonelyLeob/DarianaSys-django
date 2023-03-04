@@ -1,9 +1,12 @@
 from django.db import models
+from darianatoys.settings import AUTH_USER_MODEL
 from toys.models import Toy
 
 class Comment(models.Model):
-    toy_id = models.ForeignKey(verbose_name="ID игрушки", to=Toy, on_delete=models.PROTECT)
-    commenter_id = models.IntegerField(verbose_name="ID пользователя")
+    toy = models.ForeignKey(verbose_name="Игрушка", to=Toy, on_delete=models.CASCADE)
+    commenter = models.ForeignKey(verbose_name="Пользователь", to=AUTH_USER_MODEL, on_delete=models.CASCADE)
+    positive = models.CharField(verbose_name="Достоинства", max_length=200)
+    negative = models.CharField(verbose_name="Недостатки", max_length=200)
     comment = models.CharField(verbose_name="Отзыв", max_length=500)
 
     def __str__(self) -> str:

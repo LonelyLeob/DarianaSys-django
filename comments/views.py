@@ -1,10 +1,10 @@
-from rest_framework.request import HttpRequest
-from rest_framework.views import APIView
-from .serializer import CommentSerializer
+from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import IsAuthenticated
+from .serializer import CommentCreateSerializer
 
 # def index(request: HttpRequest):
 #     return HttpResponse("HelloWorld")
 
-class CommentView(APIView):
-    def post(self, request: HttpRequest):
-        serializer = CommentSerializer
+class CommentCreateAPIView(CreateAPIView):
+    serializer_class = CommentCreateSerializer
+    permission_classes = [IsAuthenticated,]

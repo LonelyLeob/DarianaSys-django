@@ -17,7 +17,7 @@ class PurchaseItemHistorySerializer(ModelSerializer):
 
 class PurchaseHistorySerializer(ModelSerializer):
     items = PurchaseItemHistorySerializer(many=True, read_only=False)
-    status = CharField(read_only=True, default="WAIT")
+    status = CharField(read_only=True)
     created_at = DateTimeField(read_only=True)
     total_price = SerializerMethodField(read_only=True)
     class Meta:

@@ -20,11 +20,3 @@ class User(AbstractUser):
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['password']
-
-class TokenStorage(models.Model):
-    user = models.ForeignKey(verbose_name="CompareWith", to=User, on_delete=models.CASCADE)
-    refresh = models.CharField(verbose_name="Refresh", max_length=255)
-
-    class Meta:
-        verbose_name = "TokenObject"
-        verbose_name_plural = 'TokenObjects'

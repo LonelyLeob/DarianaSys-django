@@ -1,12 +1,9 @@
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListAPIView
 from .models import Purchase
 from .serializer import PurchaseHistorySerializer
 
-# def index(request: HttpRequest):
-#     return HttpResponse("HelloWorld")
-
-class PurchaseAPIView(ListCreateAPIView):
+class PurchaseAPIView(ListAPIView):
     serializer_class = PurchaseHistorySerializer
 
     def get_queryset(self):
-        return Purchase.objects.filter(user="1")
+        return Purchase.objects.filter(user=self.request.user)
