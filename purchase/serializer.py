@@ -13,7 +13,7 @@ class PurchaseItemHistorySerializer(ModelSerializer):
         return obj.toy.price * obj.quantity
 
     def get_toy_obj(self, obj):
-        return ToySerializer(source=obj.toy, many=False, read_only=True).data
+        return ToySerializer(obj.toy, many=False, read_only=True).data
 
 class PurchaseHistorySerializer(ModelSerializer):
     items = PurchaseItemHistorySerializer(many=True, read_only=False)
