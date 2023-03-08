@@ -1,33 +1,24 @@
-from rest_framework.serializers import ModelSerializer, ImageField, SerializerMethodField
-from .models import Toy, ToyImage, Material
-from comments.models import Comment
+from rest_framework import serializers
+from .models import Toy, ToyImage
+from comments.serializer import CommentHistorySerializer
 
-class MaterialSerializer(ModelSerializer):
-    class Meta:
-        model = Material
-        fields = ('title',)
-
-class ToyImageSerializer(ModelSerializer):
-    photo = ImageField(read_only=True)
+class ToyImageSerializer(serializers.ModelSerializer):
+    photo = serializers.ImageField(read_only=True)
     class Meta:
         model = ToyImage
-        fields = ('photo',)
-    
+        fields = ['photo']
 
-class ToyShortSerializer(ModelSerializer):
+class ToyShortSerializer(serializers.ModelSerializer):
     photos = ToyImageSerializer(many=True, read_only=True)
     class Meta:
         model = Toy
-        fields = ('pk','title', 'price', 'photos')
+        fields = ('id','title', 'price', 'photos')
 
-class ToySerializer(ModelSerializer):
+class ToySerializer(serializers.ModelSerializer):
+    comments = CommentHistorySerializer(many=True, read_only=True)
+    materials = serializers.StringRelatedField(many=True, read_only=True)
     photos = ToyImageSerializer(many=True, read_only=True)
-    materials = MaterialSerializer(many=True, read_only=True)
-    comments = SerializerMethodField(read_only=True)
     class Meta:
         model = Toy
-        fields = ['pk', 'title', 'price', 'description', 'materials', 'photos', 'comments']
-
-    def get_comments(self, obj):
-        comment = Comment.objects.filter(toy=obj).values()
-        return comment
+        fields = ['id', 'title', 'price', 'description', 'materials', 'photos', 'comments']
+        depth=1

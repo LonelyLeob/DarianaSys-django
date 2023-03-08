@@ -4,7 +4,7 @@ from .models import Comment
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['pk', 'comment']
-    readonly_fields = ['pk', 'comment', 'positive', 'negative', 'toy', 'commenter']
+    readonly_fields = ['pk', 'comment', 'toy', 'commenter']
     exclude = ['pk',]
     
     def has_add_permission(self, *_):

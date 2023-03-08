@@ -4,7 +4,7 @@ from .models import Comment
 class CommentHistorySerializer(ModelSerializer):
     class Meta:
         model = Comment
-        fields = ['comment', 'user',]
+        fields = ['commenter', 'comment', 'mark']
 
 class CommentCreateSerializer(ModelSerializer):
     commenter = HiddenField(
@@ -13,4 +13,4 @@ class CommentCreateSerializer(ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ['toy', 'positive', 'negative', 'comment', 'commenter']
+        fields = ['toy', 'comment', 'commenter', 'mark']
