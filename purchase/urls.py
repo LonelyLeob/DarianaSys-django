@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import PurchaseAPIView, PurchaseBuyAPIView
+from .views import PurchaseAPIView
 
 urlpatterns = [
-    path('history/', PurchaseAPIView.as_view()),
-    path('buy/', PurchaseBuyAPIView.as_view()),
+    path('', PurchaseAPIView.as_view()),
 ]

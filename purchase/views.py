@@ -1,15 +1,11 @@
-from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.generics import ListCreateAPIView
 from .models import Purchase
-from .serializer import PurchaseSerializer, PurchaseBuySerializer
+from .serializer import PurchaseSerializer
 from rest_framework.permissions import IsAuthenticated
 
-class PurchaseAPIView(ListAPIView):
+class PurchaseAPIView(ListCreateAPIView):
     serializer_class = PurchaseSerializer
     permission_classes = (IsAuthenticated, )
 
     def get_queryset(self):
-        return Purchase.objects.all()
-
-class PurchaseBuyAPIView(CreateAPIView):
-    serializer_class = PurchaseBuySerializer
-    permission_classes = (IsAuthenticated, )
+        return Purchase.objects.filter(user=self.request.user)

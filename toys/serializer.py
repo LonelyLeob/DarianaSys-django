@@ -21,4 +21,4 @@ class ToySerializer(serializers.ModelSerializer):
     class Meta:
         model = Toy
         fields = ['id', 'title', 'price', 'description', 'materials', 'photos', 'comments']
-        depth=1
+        read_only_fields = ['id', 'title', 'price', 'description', 'materials', 'photos', 'comments']

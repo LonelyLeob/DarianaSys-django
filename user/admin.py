@@ -5,7 +5,6 @@ from .models import User
 class UserAdmin(admin.ModelAdmin):
     list_display = ['username']
     readonly_fields = ['username', 'first_name', 'age', 'password']
-    exclude = ['pk',]
 
     def has_add_permission(self, *_):
         return False
